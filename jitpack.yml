@@ -1,0 +1,10 @@
+
+
+install:
+   - echo "installing ..."
+   - pwd
+   - id -a
+   - ls -al
+   - unzip local_maven_sqlitejdbc_1.0.13.zip
+   - mv -v .m2 ~/
+
