@@ -5,6 +5,6 @@ install:
    - pwd
    - id -a
    - ls -al
-   - unzip local_maven_sqlitejdbc_1.0.21.zip
+   - unzip local_maven_sqlitejdbc_1.0.22.zip
    - mv -v .m2 ~/
 
