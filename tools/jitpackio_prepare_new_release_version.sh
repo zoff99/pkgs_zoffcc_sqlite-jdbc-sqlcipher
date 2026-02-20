@@ -33,6 +33,21 @@ echo $next_m_version
 sed -i -e 's#unzip local_maven_sqlitejdbc_.*$#unzip local_maven_sqlitejdbc_'"$next_m_version"'.zip#' "$f1"
 sed -i -e 's#.version..*./version.#<version>'"$next_m_version"'</version>#' "$f2"
 
+# generate checksum file and add and commit it
+cd "$basedir"/
+checksum_file="pkgs_zoffcc_sqlite-jdbc-sqlcipher-""$next_m_version"".aar.sha256"
+tmp_dir="unpack_temp_$$"
+rm -Rf "$tmp_dir"/
+mkdir -p "$tmp_dir"/
+cd "$tmp_dir"/ && unzip ../local_maven_sqlitejdbc_"$next_m_version".zip
+cd ./.m2/repository/com/zoffcc/applications/sqlitejdbc/sqlite-jdbc-sqlcipher/"$next_m_version"/
+sha256sum sqlite-jdbc-sqlcipher-"$next_m_version".jar
+sha256sum sqlite-jdbc-sqlcipher-"$next_m_version".jar > "$basedir"/"$checksum_file"
+cd "$basedir"/
+rm -Rf "$tmp_dir"/
+
+git add "$basedir"/"$checksum_file"
+
 commit_message="$next_m_version"
 tag_name="$next_m_version"
 
