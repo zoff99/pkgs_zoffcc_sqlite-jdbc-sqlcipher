@@ -52,6 +52,6 @@ commit_message="$next_m_version"
 tag_name="$next_m_version"
 
 git add "$f3"
-git commit -m "$commit_message" "$f1" "$f2" "$f3"
+git commit -m "$commit_message" "$f1" "$f2" "$f3" "$checksum_file"
 git tag -a "$tag_name" -m "$tag_name"
 
